@@ -55,14 +55,14 @@ describe("HodlBot", function () {
     const amtArg = ethers.utils.parseEther('1')
 
     it("Should have deposit function that accepts ERC20"), async function () {
+
+      // HEY JORDAN THIS IS WHAT I"M TALKING ABOUT RIGHT HERE
       console.log(expiryArg)
-      console.log('stuff')
       await hodlBot.connect(user).depositToken(daiAddr, amtArg, expiryArg)
 
       const signerDeposit = await hodlBot.connect(user).deposits[signerAddr]
       console.log(signerDeposit)
       assert(signerDeposit)
-
     }
   
   
