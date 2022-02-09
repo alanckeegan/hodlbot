@@ -26,12 +26,12 @@ contract HodlBot {
   constructor() {
   }
 
-  function makeDeposit(address _token, uint _amount, uint _expiry) external  noReentry {
+  function depositToken(address _token, uint _amount, uint _expiry) external  noReentry {
       require(IERC20(_token).transferFrom(msg.sender, address(this), _amount));
       deposits[msg.sender].push(Deposit(_token, _amount, _expiry));
   }
 
-  function withdraw() external noReentry {
+  function withdrawToken() external noReentry {
     for (uint i = 0; i < deposits[msg.sender].length; i++) {
       Deposit memory thisDeposit = deposits[msg.sender][i];
       if(thisDeposit.expiry <= block.timestamp) {
